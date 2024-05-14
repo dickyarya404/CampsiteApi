@@ -67,17 +67,3 @@ func (us *userUsecase) Login(email, password string) (model.User, string, error)
 	}
 	return data, token, nil
 }
-
-// func (us *userUsecase) Login(email, password string) (model.User, string, error) {
-//     userData, token, err := us.userRepository.Login(email, "")
-//     if err != nil {
-//         return model.User{}, "", err
-//     }
-
-//     err = bcrypt.CompareHashAndPassword([]byte(userData.Password), []byte(password))
-//     if err != nil {
-//         return model.User{}, "", errors.New("password salah")
-//     }
-
-//     return userData, token, nil
-// }

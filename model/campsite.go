@@ -14,7 +14,7 @@ type Campsite struct {
 	Location  string    `json:"location" from:"location"`
 	Latitude  float64   `json:"latitude" from:"latitude"`
 	Lontitude float64   `json:"lontitude" from:"lontitude"`
-	Luas      int       `json:"luas" from:"luas"`
+	AreaCamp  string    `json:"area_camp" from:"area_camp"`
 	Price     int       `json:"price" from:"price"`
 	CreatedAt time.Time
 	UpdatedAt time.Time
