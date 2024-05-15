@@ -36,7 +36,24 @@ func UserRoute(e *echo.Echo, db *gorm.DB) {
 	e.DELETE("/api/v1/booking/:id", controller.DeleteBookingController)
 
 	// Facility
-	// e.GET("/api/v1/facility", controller.GetAllFacilityController)
-	// e.GET("/api/v1/facility/:id", controller.GetFacilityByIDController)
+	e.GET("/api/v1/facility", controller.GetAllFacilityController)
+	e.GET("/api/v1/facility/:id", controller.GetFacilityByIDController)
+	e.POST("/api/v1/facility", controller.CreateFacilityController)
+	e.PUT("/api/v1/facility/:id", controller.UpdateFacilityController)
+	e.DELETE("/api/v1/facility/:id", controller.DeleteFacilityController)
+
+	// Review
+	e.GET("/api/v1/review", controller.GetAllReviewController)
+	e.GET("/api/v1/review/:id", controller.GetReviewByIDController)
+	e.POST("/api/v1/review", controller.CreateReviewController)
+	e.PUT("/api/v1/review/:id", controller.UpdateReviewController)
+	e.DELETE("/api/v1/review/:id", controller.DeleteReviewController)
+
+	// Availability
+	e.GET("/api/v1/availability", controller.GetAllAvailabilityController)
+	e.GET("/api/v1/availability/:id", controller.GetAvailabilityByIDController)
+	e.POST("/api/v1/availability", controller.CreateAvailabilityController)
+	e.PUT("/api/v1/availability/:id", controller.UpdateAvailabilityController)
+	e.DELETE("/api/v1/availability/:id", controller.DeleteAvailabilityController)
 
 }

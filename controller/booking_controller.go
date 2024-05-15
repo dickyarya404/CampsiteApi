@@ -24,7 +24,6 @@ func GetAllBookingController(c echo.Context) error {
 	})
 }
 
-// Get package by ID
 func GetBookingByIDController(c echo.Context) error {
 	id, err := uuid.Parse(c.Param("id"))
 	if err != nil {
@@ -39,7 +38,6 @@ func GetBookingByIDController(c echo.Context) error {
 	return c.JSON(http.StatusOK, booking)
 }
 
-// Add new package
 func CreateBookingController(c echo.Context) error {
 	booking := model.Booking{}
 
@@ -62,7 +60,6 @@ func CreateBookingController(c echo.Context) error {
 	})
 }
 
-// Update package
 func UpdateBookingController(c echo.Context) error {
 	id, err := uuid.Parse(c.Param("id"))
 	if err != nil {

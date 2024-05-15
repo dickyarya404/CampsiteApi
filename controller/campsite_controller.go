@@ -24,7 +24,6 @@ func GetAllCampsiteController(c echo.Context) error {
 	})
 }
 
-// Get package by ID
 func GetCampsiteByIDController(c echo.Context) error {
 	id, err := uuid.Parse(c.Param("id"))
 	if err != nil {
@@ -39,7 +38,6 @@ func GetCampsiteByIDController(c echo.Context) error {
 	return c.JSON(http.StatusOK, campsite)
 }
 
-// Add new package
 func CreateCampsiteController(c echo.Context) error {
 	campsite := model.Campsite{}
 
@@ -62,7 +60,6 @@ func CreateCampsiteController(c echo.Context) error {
 	})
 }
 
-// Update package
 func UpdateCampsiteController(c echo.Context) error {
 	id, err := uuid.Parse(c.Param("id"))
 	if err != nil {
