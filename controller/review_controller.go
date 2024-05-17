@@ -39,13 +39,13 @@ func GetReviewByIDController(c echo.Context) error {
 }
 
 func CreateReviewController(c echo.Context) error {
-	Review := model.Review{}
+	review := model.Review{}
 
-	Review.ID = uuid.New()
+	review.ID = uuid.New()
 
-	c.Bind(&Review)
+	c.Bind(&review)
 
-	err := config.DB.Save(&Review).Error
+	err := config.DB.Save(&review).Error
 
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, map[string]interface{}{
@@ -56,7 +56,7 @@ func CreateReviewController(c echo.Context) error {
 
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"message": "success create Review",
-		"data":    Review,
+		"data":    review,
 	})
 }
 
@@ -66,22 +66,22 @@ func UpdateReviewController(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, "Invalid UUID")
 	}
 
-	var Review model.Review
-	if err := config.DB.First(&Review, "id = ?", id).Error; err != nil {
+	var review model.Review
+	if err := config.DB.First(&review, "id = ?", id).Error; err != nil {
 		return c.JSON(http.StatusNotFound, "Review not found")
 	}
 
-	if err := c.Bind(&Review); err != nil {
+	if err := c.Bind(&review); err != nil {
 		return err
 	}
 
-	if err := config.DB.Save(&Review).Error; err != nil {
+	if err := config.DB.Save(&review).Error; err != nil {
 		return c.JSON(http.StatusInternalServerError, map[string]interface{}{
 			"message": err.Error(),
 		})
 	}
 
-	return c.JSON(http.StatusOK, Review)
+	return c.JSON(http.StatusOK, review)
 }
 
 func DeleteReviewController(c echo.Context) error {
@@ -90,12 +90,12 @@ func DeleteReviewController(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, "Invalid UUID")
 	}
 
-	var Review model.Review
-	if err := config.DB.First(&Review, "id = ?", id).Error; err != nil {
+	var review model.Review
+	if err := config.DB.First(&review, "id = ?", id).Error; err != nil {
 		return c.JSON(http.StatusNotFound, "Review not found")
 	}
 
-	if err := config.DB.Delete(&Review).Error; err != nil {
+	if err := config.DB.Delete(&review).Error; err != nil {
 		return c.JSON(http.StatusInternalServerError, map[string]interface{}{
 			"message": err.Error(),
 		})
